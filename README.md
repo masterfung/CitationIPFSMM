@@ -1,15 +1,18 @@
-# Basic Sample Hardhat Project
+# CitationIPFSMM
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+### To run local development instance of application:
 
-Try running some of the following tasks:
+`npm install`\
+`npm start`
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+### To deploy smart contract:
+- create .env in root directory
+- create config vars for rinkeby network deploy (see hardhat.config.js)
+- run `npx hardhat compile`
+- `npx hardhat run scripts/deploy.js --network rinkeby`
+
+### To run associated smart contract tests:
+`npx hardhat test`
+
+
+

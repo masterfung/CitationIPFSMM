@@ -1,7 +1,123 @@
+import { useState, useEffect, useCallback } from 'react';
+import Web3Modal from 'web3modal';
+import WalletConnectProvider from '@walletconnect/web3-provider';
+import { ethers } from 'ethers';
 import './App.css';
 
-function App() {
-  return <div className='App'></div>;
-}
+const App = () => {
+  const [injectedProvider, setInjectedProvider] = useState();
+  const [address, setAddress] = useState('');
+  const [chainId, setChainId] = useState();
+  const [walletConnected, setWalletConnected] = useState(false);
+
+  useEffect(() => {
+    function init() {
+      if (web3Modal.cachedProvider) {
+        connectWallet();
+      }
+    }
+    init();
+  }, []);
+
+  const connectWallet = useCallback(async () => {
+    const provider = await web3Modal.connect();
+    const injectedProvider = new ethers.providers.Web3Provider(provider);
+    setInjectedProvider(injectedProvider);
+    const signer = injectedProvider.getSigner();
+    const address = await signer.getAddress();
+    setAddress(address);
+    const balance = Number(ethers.utils.formatEther(await signer.getBalance())).toFixed(2);
+    const chainId = await signer.getChainId();
+    setChainId(chainId);
+    console.log('SIGNER :', signer);
+    console.log('ADDRESS :', address);
+    console.log('BALANCE :', balance);
+    console.log('CHAIN ID :', chainId);
+    setWalletConnected(true);
+  });
+
+  const disconnectWallet = async () => {
+    await web3Modal.clearCachedProvider();
+    setTimeout(() => {
+      setWalletConnected(false);
+      window.location.reload();
+    }, 1000);
+  };
+
+  return (
+    <div className='wrapper'>
+      <div className='header'>
+        <h1>Citation IPFS</h1>
+        {!walletConnected ? (
+          <button className='btn' onClick={connectWallet}>
+            Connect Wallet
+          </button>
+        ) : (
+          <button className='btn' onClick={disconnectWallet}>
+            Disconnect Wallet
+          </button>
+        )}
+      </div>
+      <hr />
+      <div className='main'>
+        <h4>
+          <i>Network</i>
+        </h4>
+        <p>
+          {' '}
+          {chainId === 1
+            ? 'Mainnet'
+            : chainId === 3
+            ? 'Ropsten'
+            : chainId === 4
+            ? 'Rinkeby'
+            : chainId === 42
+            ? 'Kovan'
+            : ''}
+        </p>
+        <br />
+        <h4>
+          <i>Address</i>
+        </h4>
+        <p>{address.substr(0, 5) + '...' + address.slice(address.length - 5)}</p>
+      </div>
+    </div>
+  );
+};
 
 export default App;
+
+const web3Modal = new Web3Modal({
+  cacheProvider: true,
+  providerOptions: {
+    walletconnect: {
+      package: WalletConnectProvider,
+      options: {
+        infuraId: process.env.REACT_APP_INFURA_API_KEY,
+      },
+    },
+  },
+  theme: 'dark',
+});
+
+window.ethereum &&
+  window.ethereum.on('chainChanged', (chainId) => {
+    web3Modal.cachedProvider &&
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+  });
+
+window.ethereum &&
+  window.ethereum.on('accountsChanged', async (accounts) => {
+    if (accounts.length === 0) {
+      await web3Modal.clearCachedProvider();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
+    web3Modal.cachedProvider &&
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+  });

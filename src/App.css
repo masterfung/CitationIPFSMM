@@ -1,3 +1,20 @@
-.App {
-  text-align: center;
+.wrapper {
+  max-width: 900px;
+  padding: 1rem;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0 2rem;
+}
+
+.btn {
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}
+
+.main {
+  margin-top: 2rem;
 }

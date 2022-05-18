@@ -1,23 +1,14 @@
-import { useState, useEffect, useCallback } from 'react';
-import Web3Modal from 'web3modal';
-import WalletConnectProvider from '@walletconnect/web3-provider';
-import { ethers } from 'ethers';
-import './App.css';
+import { useState, useEffect, useCallback } from "react";
+import Web3Modal from "web3modal";
+import WalletConnectProvider from "@walletconnect/web3-provider";
+import { ethers } from "ethers";
+import "./App.css";
 
 const App = () => {
   const [injectedProvider, setInjectedProvider] = useState();
-  const [address, setAddress] = useState('');
+  const [address, setAddress] = useState("");
   const [chainId, setChainId] = useState();
   const [walletConnected, setWalletConnected] = useState(false);
-
-  useEffect(() => {
-    function init() {
-      if (web3Modal.cachedProvider) {
-        connectWallet();
-      }
-    }
-    init();
-  }, []);
 
   const connectWallet = useCallback(async () => {
     const provider = await web3Modal.connect();
@@ -26,15 +17,26 @@ const App = () => {
     const signer = injectedProvider.getSigner();
     const address = await signer.getAddress();
     setAddress(address);
-    const balance = Number(ethers.utils.formatEther(await signer.getBalance())).toFixed(2);
+    const balance = Number(
+      ethers.utils.formatEther(await signer.getBalance())
+    ).toFixed(2);
     const chainId = await signer.getChainId();
     setChainId(chainId);
-    console.log('SIGNER :', signer);
-    console.log('ADDRESS :', address);
-    console.log('BALANCE :', balance);
-    console.log('CHAIN ID :', chainId);
+    console.log("SIGNER :", signer);
+    console.log("ADDRESS :", address);
+    console.log("BALANCE :", balance);
+    console.log("CHAIN ID :", chainId);
     setWalletConnected(true);
-  });
+  }, []);
+
+  useEffect(() => {
+    function init() {
+      if (web3Modal.cachedProvider) {
+        connectWallet();
+      }
+    }
+    init();
+  }, [connectWallet]);
 
   const disconnectWallet = async () => {
     await web3Modal.clearCachedProvider();
@@ -45,41 +47,31 @@ const App = () => {
   };
 
   return (
-    <div className='wrapper'>
-      <div className='header'>
-        <h1>Citation IPFS</h1>
-        {!walletConnected ? (
-          <button className='btn' onClick={connectWallet}>
-            Connect Wallet
-          </button>
-        ) : (
-          <button className='btn' onClick={disconnectWallet}>
-            Disconnect Wallet
-          </button>
-        )}
-      </div>
+    <div className="wrapper">
       <hr />
-      <div className='main'>
+      <div className="main">
         <h4>
           <i>Network</i>
         </h4>
         <p>
-          {' '}
+          {" "}
           {chainId === 1
-            ? 'Mainnet'
+            ? "Mainnet"
             : chainId === 3
-            ? 'Ropsten'
+            ? "Ropsten"
             : chainId === 4
-            ? 'Rinkeby'
+            ? "Rinkeby"
             : chainId === 42
-            ? 'Kovan'
-            : ''}
+            ? "Kovan"
+            : ""}
         </p>
         <br />
         <h4>
           <i>Address</i>
         </h4>
-        <p>{address.substr(0, 5) + '...' + address.slice(address.length - 5)}</p>
+        <p>
+          {address.substr(0, 5) + "..." + address.slice(address.length - 5)}
+        </p>
       </div>
     </div>
   );
@@ -97,11 +89,11 @@ const web3Modal = new Web3Modal({
       },
     },
   },
-  theme: 'dark',
+  theme: "dark",
 });
 
 window.ethereum &&
-  window.ethereum.on('chainChanged', (chainId) => {
+  window.ethereum.on("chainChanged", (chainId) => {
     web3Modal.cachedProvider &&
       setTimeout(() => {
         window.location.reload();
@@ -109,7 +101,7 @@ window.ethereum &&
   });
 
 window.ethereum &&
-  window.ethereum.on('accountsChanged', async (accounts) => {
+  window.ethereum.on("accountsChanged", async (accounts) => {
     if (accounts.length === 0) {
       await web3Modal.clearCachedProvider();
       setTimeout(() => {

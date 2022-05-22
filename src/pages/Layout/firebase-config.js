@@ -1,0 +1,39 @@
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+import { initializeApp } from "firebase/app";
+// import { getAuth, signInWithEmailAndPassword,signInAnonymously } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
+// import { getAuth, createUserWithEmailAndPassword } from import { initializeApp } from
+import { getAuth, signInAnonymously, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import { getDatabase, ref, child, get } from "firebase/database";
+// import { initializeApp } from "firebase/app";
+import { getStorage } from "firebase/storage";
+import {doc, getDoc , getFirestore } from "firebase/firestore";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+
+// const firebaseInit = () => {
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyC1rJU4UqpsDAzVlVLR74x7Os3jC7-81fY",
+    authDomain: "project-7c230.firebaseapp.com",
+    projectId: "project-7c230",
+    storageBucket: "project-7c230.appspot.com",
+    messagingSenderId: "530437029725",
+    appId: "1:530437029725:web:b18aa5ebfea31b102f32b4"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+console.log(app.name);  // "[DEFAULT]"
+// Option 2: Access Firebase services using shorthand notation
+const defaultStorage = getStorage(app);
+// let defaultFirestore = getFirestore();
+export const db = getFirestore(app);
+console.log(db);  // "[DEFAULT]"
+
+// return db;
+
+// }
+
+
+
+// export default db;

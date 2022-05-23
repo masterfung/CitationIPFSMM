@@ -21,14 +21,25 @@ require('dotenv').config();
 //     appId: process.env.appId
 // };
 // Your web app's Firebase configuration
+
+// const firebaseConfig = {
+//     apiKey: "AIzaSyC1rJU4UqpsDAzVlVLR74x7Os3jC7-81fY",
+//     authDomain: "project-7c230.firebaseapp.com",
+//     projectId: "project-7c230",
+//     storageBucket: "project-7c230.appspot.com",
+//     messagingSenderId: "530437029725",
+//     appId: "1:530437029725:web:b18aa5ebfea31b102f32b4"
+// };
+
 const firebaseConfig = {
-    apiKey: "AIzaSyC1rJU4UqpsDAzVlVLR74x7Os3jC7-81fY",
-    authDomain: "project-7c230.firebaseapp.com",
-    projectId: "project-7c230",
-    storageBucket: "project-7c230.appspot.com",
-    messagingSenderId: "530437029725",
-    appId: "1:530437029725:web:b18aa5ebfea31b102f32b4"
+    apiKey: "AIzaSyBvOw6cNjlJBvEr31z_fKkK5G-rSchZ8GE",
+    authDomain: "citationipfsmm.firebaseapp.com",
+    projectId: "citationipfsmm",
+    storageBucket: "citationipfsmm.appspot.com",
+    messagingSenderId: "776952237060",
+    appId: "1:776952237060:web:5592f97f2badcb0e23f951"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

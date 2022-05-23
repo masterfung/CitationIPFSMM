@@ -1,0 +1,358 @@
+Posts Collection: {
+    "owner": {
+        "converter": null,
+        "_key": {
+            "path": {
+                "segments": [
+                    "projects",
+                    "project-7c230",
+                    "databases",
+                    "(default)",
+                    "documents",
+                    "Users",
+                    "user1"
+                ],
+                "offset": 5,
+                "len": 2
+            }
+        },
+        "type": "document",
+        "firestore": {
+            "app": {
+                "_isDeleted": false,
+                "_options": {
+                    "apiKey": "AIzaSyC1rJU4UqpsDAzVlVLR74x7Os3jC7-81fY",
+                    "authDomain": "project-7c230.firebaseapp.com",
+                    "projectId": "project-7c230",
+                    "storageBucket": "project-7c230.appspot.com",
+                    "messagingSenderId": "530437029725",
+                    "appId": "1:530437029725:web:b18aa5ebfea31b102f32b4"
+                },
+                "_config": {
+                    "name": "[DEFAULT]",
+                    "automaticDataCollectionEnabled": false
+                },
+                "_name": "[DEFAULT]",
+                "_automaticDataCollectionEnabled": false,
+                "_container": {
+                    "name": "[DEFAULT]",
+                    "providers": {}
+                }
+            },
+            "databaseId": {
+                "projectId": "project-7c230",
+                "database": "(default)"
+            },
+            "settings": {
+                "host": "firestore.googleapis.com",
+                "ssl": true,
+                "ignoreUndefinedProperties": false,
+                "cacheSizeBytes": 41943040,
+                "experimentalForceLongPolling": false,
+                "experimentalAutoDetectLongPolling": false,
+                "useFetchStreams": true
+            }
+        }
+    },
+    "postContent": "ghopper: Relay malfunction found. Cause: moth.",
+    "postCID": "bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
+    "postTitle": "Historical Tech Pioneers",
+    "CIDType": "CIDv0",
+    "postSize": 1000000,
+    "publishDate": {
+        "seconds": 1652727600,
+        "nanoseconds": 0
+    },
+    "citationsUsed": [
+        {
+            "converter": null,
+            "_key": {
+                "path": {
+                    "segments": [
+                        "projects",
+                        "project-7c230",
+                        "databases",
+                        "(default)",
+                        "documents",
+                        "Citations",
+                        "a"
+                    ],
+                    "offset": 5,
+                    "len": 2
+                }
+            },
+            "type": "document",
+            "firestore": {
+                "app": {
+                    "_isDeleted": false,
+                    "_options": {
+                        "apiKey": "AIzaSyC1rJU4UqpsDAzVlVLR74x7Os3jC7-81fY",
+                        "authDomain": "project-7c230.firebaseapp.com",
+                        "projectId": "project-7c230",
+                        "storageBucket": "project-7c230.appspot.com",
+                        "messagingSenderId": "530437029725",
+                        "appId": "1:530437029725:web:b18aa5ebfea31b102f32b4"
+                    },
+                    "_config": {
+                        "name": "[DEFAULT]",
+                        "automaticDataCollectionEnabled": false
+                    },
+                    "_name": "[DEFAULT]",
+                    "_automaticDataCollectionEnabled": false,
+                    "_container": {
+                        "name": "[DEFAULT]",
+                        "providers": {}
+                    }
+                },
+                "databaseId": {
+                    "projectId": "project-7c230",
+                    "database": "(default)"
+                },
+                "settings": {
+                    "host": "firestore.googleapis.com",
+                    "ssl": true,
+                    "ignoreUndefinedProperties": false,
+                    "cacheSizeBytes": 41943040,
+                    "experimentalForceLongPolling": false,
+                    "experimentalAutoDetectLongPolling": false,
+                    "useFetchStreams": true
+                }
+            }
+        },
+        {
+            "converter": null,
+            "_key": {
+                "path": {
+                    "segments": [
+                        "projects",
+                        "project-7c230",
+                        "databases",
+                        "(default)",
+                        "documents",
+                        "Citations",
+                        "b"
+                    ],
+                    "offset": 5,
+                    "len": 2
+                }
+            },
+            "type": "document",
+            "firestore": {
+                "app": {
+                    "_isDeleted": false,
+                    "_options": {
+                        "apiKey": "AIzaSyC1rJU4UqpsDAzVlVLR74x7Os3jC7-81fY",
+                        "authDomain": "project-7c230.firebaseapp.com",
+                        "projectId": "project-7c230",
+                        "storageBucket": "project-7c230.appspot.com",
+                        "messagingSenderId": "530437029725",
+                        "appId": "1:530437029725:web:b18aa5ebfea31b102f32b4"
+                    },
+                    "_config": {
+                        "name": "[DEFAULT]",
+                        "automaticDataCollectionEnabled": false
+                    },
+                    "_name": "[DEFAULT]",
+                    "_automaticDataCollectionEnabled": false,
+                    "_container": {
+                        "name": "[DEFAULT]",
+                        "providers": {}
+                    }
+                },
+                "databaseId": {
+                    "projectId": "project-7c230",
+                    "database": "(default)"
+                },
+                "settings": {
+                    "host": "firestore.googleapis.com",
+                    "ssl": true,
+                    "ignoreUndefinedProperties": false,
+                    "cacheSizeBytes": 41943040,
+                    "experimentalForceLongPolling": false,
+                    "experimentalAutoDetectLongPolling": false,
+                    "useFetchStreams": true
+                }
+            }
+        }
+    ],
+    "id": "Post1"
+}
+Citations Collection : {
+    "postCID": "QmdmQXB2mzChmMeKY47C43LxUdg1NDJ5MWcKMKxDu7RgQm",
+    "referenceString": "example reference string",
+    "postsCiting": [
+        {
+            "converter": null,
+            "_key": {
+                "path": {
+                    "segments": [
+                        "projects",
+                        "project-7c230",
+                        "databases",
+                        "(default)",
+                        "documents",
+                        "Posts",
+                        "a"
+                    ],
+                    "offset": 5,
+                    "len": 2
+                }
+            },
+            "type": "document",
+            "firestore": {
+                "app": {
+                    "_isDeleted": false,
+                    "_options": {
+                        "apiKey": "AIzaSyC1rJU4UqpsDAzVlVLR74x7Os3jC7-81fY",
+                        "authDomain": "project-7c230.firebaseapp.com",
+                        "projectId": "project-7c230",
+                        "storageBucket": "project-7c230.appspot.com",
+                        "messagingSenderId": "530437029725",
+                        "appId": "1:530437029725:web:b18aa5ebfea31b102f32b4"
+                    },
+                    "_config": {
+                        "name": "[DEFAULT]",
+                        "automaticDataCollectionEnabled": false
+                    },
+                    "_name": "[DEFAULT]",
+                    "_automaticDataCollectionEnabled": false,
+                    "_container": {
+                        "name": "[DEFAULT]",
+                        "providers": {}
+                    }
+                },
+                "databaseId": {
+                    "projectId": "project-7c230",
+                    "database": "(default)"
+                },
+                "settings": {
+                    "host": "firestore.googleapis.com",
+                    "ssl": true,
+                    "ignoreUndefinedProperties": false,
+                    "cacheSizeBytes": 41943040,
+                    "experimentalForceLongPolling": false,
+                    "experimentalAutoDetectLongPolling": false,
+                    "useFetchStreams": true
+                }
+            }
+        },
+        {
+            "converter": null,
+            "_key": {
+                "path": {
+                    "segments": [
+                        "projects",
+                        "project-7c230",
+                        "databases",
+                        "(default)",
+                        "documents",
+                        "Posts",
+                        "b"
+                    ],
+                    "offset": 5,
+                    "len": 2
+                }
+            },
+            "type": "document",
+            "firestore": {
+                "app": {
+                    "_isDeleted": false,
+                    "_options": {
+                        "apiKey": "AIzaSyC1rJU4UqpsDAzVlVLR74x7Os3jC7-81fY",
+                        "authDomain": "project-7c230.firebaseapp.com",
+                        "projectId": "project-7c230",
+                        "storageBucket": "project-7c230.appspot.com",
+                        "messagingSenderId": "530437029725",
+                        "appId": "1:530437029725:web:b18aa5ebfea31b102f32b4"
+                    },
+                    "_config": {
+                        "name": "[DEFAULT]",
+                        "automaticDataCollectionEnabled": false
+                    },
+                    "_name": "[DEFAULT]",
+                    "_automaticDataCollectionEnabled": false,
+                    "_container": {
+                        "name": "[DEFAULT]",
+                        "providers": {}
+                    }
+                },
+                "databaseId": {
+                    "projectId": "project-7c230",
+                    "database": "(default)"
+                },
+                "settings": {
+                    "host": "firestore.googleapis.com",
+                    "ssl": true,
+                    "ignoreUndefinedProperties": false,
+                    "cacheSizeBytes": 41943040,
+                    "experimentalForceLongPolling": false,
+                    "experimentalAutoDetectLongPolling": false,
+                    "useFetchStreams": true
+                }
+            }
+        }
+    ],
+    "id": " TDqrpaQh2zdKbpZr8EZx"
+}
+Citations Collection : {
+    "referenceString": "example reference string",
+    "postCID": "bagiacgzah24drzou2jlkixpblbgbg6nxfrasoklzttzoht5hixhxz3rlncyq",
+    "postsCiting": [
+        {
+            "converter": null,
+            "_key": {
+                "path": {
+                    "segments": [
+                        "projects",
+                        "project-7c230",
+                        "databases",
+                        "(default)",
+                        "documents",
+                        "Posts",
+                        "c"
+                    ],
+                    "offset": 5,
+                    "len": 2
+                }
+            },
+            "type": "document",
+            "firestore": {
+                "app": {
+                    "_isDeleted": false,
+                    "_options": {
+                        "apiKey": "AIzaSyC1rJU4UqpsDAzVlVLR74x7Os3jC7-81fY",
+                        "authDomain": "project-7c230.firebaseapp.com",
+                        "projectId": "project-7c230",
+                        "storageBucket": "project-7c230.appspot.com",
+                        "messagingSenderId": "530437029725",
+                        "appId": "1:530437029725:web:b18aa5ebfea31b102f32b4"
+                    },
+                    "_config": {
+                        "name": "[DEFAULT]",
+                        "automaticDataCollectionEnabled": false
+                    },
+                    "_name": "[DEFAULT]",
+                    "_automaticDataCollectionEnabled": false,
+                    "_container": {
+                        "name": "[DEFAULT]",
+                        "providers": {}
+                    }
+                },
+                "databaseId": {
+                    "projectId": "project-7c230",
+                    "database": "(default)"
+                },
+                "settings": {
+                    "host": "firestore.googleapis.com",
+                    "ssl": true,
+                    "ignoreUndefinedProperties": false,
+                    "cacheSizeBytes": 41943040,
+                    "experimentalForceLongPolling": false,
+                    "experimentalAutoDetectLongPolling": false,
+                    "useFetchStreams": true
+                }
+            }
+        }
+    ],
+    "id": "GcAzbQypMBJhYNGvf5ry"
+}

@@ -69,11 +69,11 @@ const firebaseAuth = async (db) => {
     });
 
 
-    const querySnapshot = await getDocs(collection(db, "Users"));
-    querySnapshot.forEach((doc) => {
-        console.log(`SUCCESS Users Collection querySnapshot `);
-        console.log(`${doc.id} => ${doc.data()}`);
-    });
+    // const querySnapshot = await getDocs(collection(db, "Users"));
+    // querySnapshot.forEach((doc) => {
+    //     console.log(`SUCCESS Users Collection querySnapshot `);
+    //     console.log(`${doc.id} => ${doc.data()}`);
+    // });
 
 
     const docRef = doc(db, "Posts", "Post1");
@@ -147,7 +147,13 @@ const Layout = () => {
     // firebaseRead();
     // console.log(`AFTER firebaseRead()`);
     const [users, setUsers] = useState([]);
+    const [posts, setPosts] = useState([]);
+    const [citations, setCitations] = useState([]);
+
     const UsersCollectionRef = collection(db, "Users");
+    const PostsCollectionRef = collection(db, "Posts");
+    const CitationsCollectionRef = collection(db, "Citations");
+
     const [uCites, setUCites] = useState([]);
     const [uPosts, setUPosts] = useState([]);
     const handleCount = () => {
@@ -164,26 +170,31 @@ const Layout = () => {
         const firebaseGetUsers = async (db) => {
             console.log(`==========================================`);
 
-            const querySnapshot = await getDocs(UsersCollectionRef);
-            console.log(`SUCCESS Users Collection querySnapshot `);
-            console.log(`querySnapshot ::: ${querySnapshot}`);
-            console.log(querySnapshot);
+            const UsersSnapshot = await getDocs(UsersCollectionRef);
 
-            for (const [key, value] of Object.entries(querySnapshot)) {
+            const PostsSnapshot = await getDocs(PostsCollectionRef);
+            const CitationsSnapshot = await getDocs(CitationsCollectionRef);
+
+            console.log(`SUCCESS Users Collection querySnapshot `);
+            console.log(`UsersSnapshot ::: ${UsersSnapshot}`);
+            console.log(UsersSnapshot);
+
+            for (const [key, value] of Object.entries(UsersSnapshot)) {
                 console.log(`${key}: ${value}`);
             }
             console.log(` *** `);
 
-            querySnapshot.forEach((doc) => {
-                // console.log(`SUCCESS Users Collection querySnapshot `);
+            UsersSnapshot.forEach((doc) => {
+                // console.log(`SUCCESS Users Collection UsersSnapshot `);
                 console.log(`${doc.id} => ${doc.data()}`);
                 console.log(`doc.userAddr => ${doc.userAddr}`);
                 console.log(`doc.userCitations => ${doc.userCitations}`);
             });
 
-            // let docsArr = querySnapshot.docs;
-            setUsers(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-
+            // let docsArr = UsersSnapshot.docs;
+            setUsers(UsersSnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+            setPosts(PostsSnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+            setCitations(CitationsSnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
 
             // docs[0]._document
         }
@@ -265,30 +276,82 @@ const Layout = () => {
                             <>
                                 <div>
                                     {" "}
-                                    <h3>userAddr:</h3>
+                                    <b>user's address':</b>
                                     <ul>
                                         {user.userAddr}
                                     </ul>
                                     {/* <h1>Age: {user.age}</h1> */}
                                     {/* <h3>userCitations: {user.userCitations.map(home => <div>{home.referenceValue}</div>)}</h3>
                                     <h3>userPosts: {user.userPosts.map(home => <div>{home.referenceValue}</div>)}</h3> */}
-                                    <h3>userCitations: {user.userCitations.map(home => <div>{home.referenceValue}</div>)}</h3>
+                                    <b>user's Citations: {user.userCitations.map(home => <div>{home.referenceValue}</div>)}</b>
                                     {/* <h3>userPosts: {user.userPosts.map(home => <div>{home.referenceValue}</div>)}</h3> */}
                                     <ul>
                                         {user.userCitations && user.userCitations.map(item => {
                                             return <li>{JSON.stringify(item._key.path.segments.join('/'))}</li>;
                                         })}
                                     </ul>
-                                    <h3>userPosts: </h3>
+                                    <b>user's Posts: </b>
                                     <ul>
                                         {user.userPosts && user.userPosts.map(item => {
                                             return <li>{JSON.stringify(item._key.path.segments.join('/'))}</li>;
+                                        })}
+                                    </ul>
+
+                                </div>
+                            </>
+                        );
+                    })}
+                    {posts.map((post) => {
+                        // return <React.Fragment>{JSON.stringify(["a", { b: "c" }])}</React.Fragment>;
+
+                        return (
+                            <>
+                                <div>
+                                    {" "}
+                                    {/* <b>Posts Collection: {JSON.stringify(post)}</b> */}
+                                    <b>Post Id:</b>
+                                    <ul>
+                                        {post.id}
+                                    </ul>
+                                    <b>Posts Path: {JSON.stringify(post.owner._key.path.segments.join('/'))}</b>
+                                    <b> Citations Used: </b>
+                                    <ul>
+                                        {post.citationsUsed && post.citationsUsed.map(item => {
+                                            return (
+                                                <>
+                                                    <li>{"postDBPath : " + JSON.stringify(post.owner._key.path.segments.join('/'))}</li>
+                                                    <li>{"postTitle : " + post.postTitle}</li>
+                                                    <li>{"postCID : " + post.postCID}</li>
+                                                </>)
                                         })}
                                     </ul>
                                 </div>
                             </>
                         );
                     })}
+                    {citations.map((cite) => {
+                        // return <React.Fragment>{JSON.stringify(["a", { b: "c" }])}</React.Fragment>;
+
+                        return (
+                            <>
+                                <div>
+                                    {" "}
+                                    <b>Citations Collection: </b>
+                                    {/* <h3>Citations Collection :{JSON.stringify(cite)}</h3> */}
+                                    <ul>
+                                        {cite.postsCiting && cite.postsCiting.map(item => {
+                                            return <li>{"Citing Posts Path: " + item._key.path.segments.join('/')}</li>
+                                        })}
+                                    </ul>
+                                    {/* <li>{"Citing Post Path: "}+{JSON.stringify(cite.postsCiting._key.path.segments.join('/'))}</li>; */}
+                                    <li>{"Citing Post CID : " + cite.postCID}</li>
+                                    {/* <li>{"postTitle : "}+{cite.postTitle}</li>; */}
+                                    <li>{"referenceString Used by Citing Post: " + cite.referenceString}</li>
+                                </div>
+                            </>
+                        );
+                    })}
+
                     {!walletConnected ? (
                         <>
                             <button className="btn" onClick={connectWallet}>

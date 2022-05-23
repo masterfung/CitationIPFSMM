@@ -7,6 +7,8 @@ import Layout from "./pages/Layout";
 import Reference from "./components/Reference";
 import AddIPFS from "./components/AddIPFS";
 import NotFound from "./components/NotFound";
+import Validate from "./components/Validate";
+import BlogReference from "./components/BlogReference";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,7 +17,9 @@ root.render(
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<App />} />
-          <Route path="reference" element={<Reference />} />
+          <Route path="validate/:hash" element={<Validate />} />
+          <Route path="browse/:cid" element={<Reference />} />
+          <Route path="example" element={<BlogReference />} />
           <Route path="contribute" element={<AddIPFS />} />
           <Route path="*" element={<NotFound />} />
         </Route>

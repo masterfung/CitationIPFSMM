@@ -38,14 +38,6 @@ const App = () => {
     init();
   }, [connectWallet]);
 
-  const disconnectWallet = async () => {
-    await web3Modal.clearCachedProvider();
-    setTimeout(() => {
-      setWalletConnected(false);
-      window.location.reload();
-    }, 1000);
-  };
-
   return (
     <div className="wrapper">
       <hr />
@@ -92,24 +84,3 @@ const web3Modal = new Web3Modal({
   theme: "dark",
 });
 
-window.ethereum &&
-  window.ethereum.on("chainChanged", (chainId) => {
-    web3Modal.cachedProvider &&
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
-  });
-
-window.ethereum &&
-  window.ethereum.on("accountsChanged", async (accounts) => {
-    if (accounts.length === 0) {
-      await web3Modal.clearCachedProvider();
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
-    }
-    web3Modal.cachedProvider &&
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
-  });

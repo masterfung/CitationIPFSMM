@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from "react";
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { ethers } from "ethers";
+import { Nav } from "react-bootstrap";
 
 const web3Modal = new Web3Modal({
   cacheProvider: true,
@@ -94,7 +95,7 @@ const Layout = () => {
             <Link to="/contribute">Blogs</Link>
           </li>
           <li>
-            <Link to="/reference">Reference</Link>
+            <Link to="/example">Example</Link>
           </li>
           {!walletConnected ? (
             <>

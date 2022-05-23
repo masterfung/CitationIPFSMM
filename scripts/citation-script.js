@@ -1,7 +1,7 @@
 const hre = require('hardhat');
 
 async function main() {
-  const CitationIPFS = await hre.ethers.getContractFactory('CitationIPS');
+  const CitationIPFS = await hre.ethers.getContractFactory('CitationIPFS');
   const citationIPFS = await CitationIPFS.deploy();
 
   await citationIPFS.deployed();
@@ -11,7 +11,7 @@ async function main() {
 
 main()
   .then(() => process.exit(0))
-  .catch(error => {
+  .catch((error) => {
     console.error(error);
     process.exit(1);
   });

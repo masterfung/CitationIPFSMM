@@ -1,12 +1,12 @@
-import { useState, useEffect, useCallback } from "react";
-import Web3Modal from "web3modal";
-import WalletConnectProvider from "@walletconnect/web3-provider";
-import { ethers } from "ethers";
-import "./App.css";
+import { useState, useEffect, useCallback } from 'react';
+import Web3Modal from 'web3modal';
+import WalletConnectProvider from '@walletconnect/web3-provider';
+import { ethers } from 'ethers';
+import './App.css';
 
 const App = () => {
   const [injectedProvider, setInjectedProvider] = useState();
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState('');
   const [chainId, setChainId] = useState();
   const [walletConnected, setWalletConnected] = useState(false);
 
@@ -22,10 +22,10 @@ const App = () => {
     ).toFixed(2);
     const chainId = await signer.getChainId();
     setChainId(chainId);
-    console.log("SIGNER :", signer);
-    console.log("ADDRESS :", address);
-    console.log("BALANCE :", balance);
-    console.log("CHAIN ID :", chainId);
+    console.log('SIGNER :', signer);
+    console.log('ADDRESS :', address);
+    console.log('BALANCE :', balance);
+    console.log('CHAIN ID :', chainId);
     setWalletConnected(true);
   }, []);
 
@@ -39,30 +39,30 @@ const App = () => {
   }, [connectWallet]);
 
   return (
-    <div className="wrapper">
+    <div className='wrapper'>
       <hr />
-      <div className="main">
+      <div className='main'>
         <h4>
           <i>Network</i>
         </h4>
         <p>
-          {" "}
+          {' '}
           {chainId === 1
-            ? "Mainnet"
+            ? 'Mainnet'
             : chainId === 3
-            ? "Ropsten"
+            ? 'Ropsten'
             : chainId === 4
-            ? "Rinkeby"
+            ? 'Rinkeby'
             : chainId === 42
-            ? "Kovan"
-            : ""}
+            ? 'Kovan'
+            : ''}
         </p>
         <br />
         <h4>
           <i>Address</i>
         </h4>
         <p>
-          {address.substr(0, 5) + "..." + address.slice(address.length - 5)}
+          {address.substr(0, 5) + '...' + address.slice(address.length - 5)}
         </p>
       </div>
     </div>
@@ -81,6 +81,5 @@ const web3Modal = new Web3Modal({
       },
     },
   },
-  theme: "dark",
+  theme: 'dark',
 });
-

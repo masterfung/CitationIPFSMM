@@ -29,8 +29,8 @@ module.exports = {
     localhost: {
       url: 'http://127.0.0.1:8545',
     },
-    rinkeby: {
-      url: process.env.RINKEBY_RPC_URL,
+    goerli: {
+      url: process.env.GOERLI_RPC_URL,
       accounts: [process.env.PRIVATE_KEY],
     },
   },

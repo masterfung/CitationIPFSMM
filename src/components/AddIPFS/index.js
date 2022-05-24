@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './index.css';
 import { TextUpload } from 'react-ipfs-uploader';
+import './index.css';
 
 const AddIPFS = () => {
   const [textUrl, setTextUrl] = useState('');

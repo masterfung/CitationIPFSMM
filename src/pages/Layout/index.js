@@ -337,32 +337,108 @@ const Layout = () => {
   return (
     <>
       <h1>Citation IPFS</h1>
-      <nav className='citation-nav'>
-        <span>
-          <Link to='/'>Home</Link>
-        </span>
-        <span>
-          <Link to='/contribute'>Blogs</Link>
-        </span>
-        <span>
-          <Link to='/example'>Example</Link>
-        </span>
-        {!walletConnected ? (
-          <>
-            <button className='btn' onClick={connectWallet}>
-              Connect Wallet
-            </button>
-          </>
-        ) : (
-          <>
-            <button className='btn' onClick={disconnectWallet}>
-              Disconnect Wallet
-            </button>
-            <button className='btn' onClick={() => navigate('/contribute')}>
-              Contribute
-            </button>
-          </>
-        )}
+      <nav>
+        <ul>
+          <span className='cit-nav-link'>
+            <Link to='/'>Home</Link>
+          </span>
+          <span className='cit-nav-link'>
+            <Link to='/contribute'>Blogs</Link>
+          </span>
+          <span className='cit-nav-link'>
+            <Link to='/example'>Example</Link>
+          </span>
+          {/* <input placeholder="Username..." /> */}
+          <input placeholder='User Address...' />
+          {/* <button>Search</button> */}
+          {/* handleCount(); */}
+          <button className='btn' onClick={handleCount}>
+            Search
+          </button>
+
+          {!walletConnected ? (
+            <>
+              <button className='btn' onClick={connectWallet}>
+                Connect Wallet
+              </button>
+
+              {users.map(user => {
+                // return <React.Fragment>{JSON.stringify(["a", { b: "c" }])}</React.Fragment>;
+
+                return (
+                  <div>
+                    <div className='db-data'>
+                      {' '}
+                      <b>
+                        {user.id.startsWith('0x')
+                          ? `user's address : ${user.id}`
+                          : ''}
+                      </b>
+                      <ul>
+                        {user.id.startsWith('0x') &&
+                          user.citationsArray.map(item => {
+                            return <li>{JSON.stringify(item)}</li>;
+                          })}
+                      </ul>
+                      <ul>
+                        {user.id.startsWith('0x') &&
+                          user.postsArray.map(item => {
+                            return <li>{JSON.stringify(item)}</li>;
+                          })}
+                      </ul>
+                    </div>
+                  </div>
+                );
+              })}
+            </>
+          ) : (
+            <>
+              <button className='btn' onClick={disconnectWallet}>
+                Disconnect Wallet
+              </button>
+              <button className='btn' onClick={() => navigate('/contribute')}>
+                Contribute
+              </button>
+
+              <button className='btn' onClick={updateDBs}>
+                Add new citation and post to user
+              </button>
+              <button className='btn' onClick={demoHelpers}>
+                Demo Helper functions
+              </button>
+
+              {!userExists ? (
+                <>
+                  <div>IS NEW USER</div>
+                </>
+              ) : (
+                <>
+                  let a= 1; let entries = Object.entries(currUser);
+                  <div>
+                    LOGIN SUCCESS() CALLED curr user data :
+                    <li>{JSON.stringify(currUser)}</li>
+                  </div>
+                  curr user data2 :
+                  <li>{JSON.stringify(currUser.citationsArray)}</li>
+                  curr user data3 :
+                  <li>{JSON.stringify(currUser.postsArray)}</li>
+                  <ul>
+                    {currUser.citationsArray &&
+                      currUser.citationsArray.map(item => {
+                        return <li>{item[0]}</li>;
+                      })}
+                  </ul>
+                  <ul>
+                    {currUser.postsArray &&
+                      currUser.postsArray.map(item => {
+                        return <li>{item[0]}</li>;
+                      })}
+                  </ul>
+                </>
+              )}
+            </>
+          )}
+        </ul>
       </nav>
 
       <Outlet />
